@@ -1,8 +1,8 @@
-#Oan Tu Ti app.
+# Oan Tu Ti app.
 
-###Nguyen Ngoc Luc.
+### Nguyen Ngoc Luc.
 
-###Project specifications:
+### Project specifications:
 
 1. OS: iOS.
 2. Language: Swift 3.
