@@ -16,6 +16,7 @@ class ListenProfileEvent {
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientUpdateProfileRs) { (data, ack) in
             
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+                
                 //Send delegate to Profile screen
                 NotificationCenter.default.post(name: NotificationCommands.Instance.profileDelegate, object: response)
             }

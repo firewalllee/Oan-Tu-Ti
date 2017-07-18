@@ -56,10 +56,13 @@ class MainViewController: UIViewController {
         
         //User leave room
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerLeaveGame), name: NotificationCommands.Instance.waitingDelegate, object: nil)
+        
         //Submit selection
         NotificationCenter.default.addObserver(self, selector: #selector(self.userSubmit), name: NotificationCommands.Instance.submitDelegate, object: nil)
+        
         //User ready
         NotificationCenter.default.addObserver(self, selector: #selector(self.clientReady), name: NotificationCommands.Instance.readyDelegate, object: nil)
+        
         //-> Server send match result
         NotificationCenter.default.addObserver(self, selector: #selector(self.receiveMatchResultEvent), name: NotificationCommands.Instance.matchResultDelegate, object: nil)
         
@@ -71,6 +74,7 @@ class MainViewController: UIViewController {
         self.viewProperties()
         
     }
+    
     //Sub view properties
     func viewProperties() {
         imgGuestAvatar.lightBorder(with: 4)
@@ -80,6 +84,7 @@ class MainViewController: UIViewController {
     
     //->Bind data User and Guest
     func bind() {
+        
         //Both user
         self.lblBestOf.text = "Bo \(self.thisRoom.best_of)"
         self.best_of = thisRoom.best_of
@@ -122,12 +127,14 @@ class MainViewController: UIViewController {
 
         }
     }
+    
     //-> User quit suddenly quit game
     func playerLeaveGame(notification:Notification) {
         if let _:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             self.alertEndGame("You win!")
         }
     }
+    
     //-> User submit selection
     func userSubmit(notification:Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
@@ -141,6 +148,7 @@ class MainViewController: UIViewController {
                 self.whichAnswer(their, me: false)
                 if let selF:Int = response[Contants.Instance.selF] as? Int {
                     self.whichAnswer(selF)
+                    
                     //If draw will not score this game
                     if their == selF {
                         self.lblMatchResult.text = "Draw"
@@ -159,6 +167,7 @@ class MainViewController: UIViewController {
                             }
                         }
                     }
+                    
                     //Reset timer
                     self.resetTime()
                     self.game_id += 1
@@ -167,6 +176,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
     //-> Client ready
     func clientReady(notification:Notification) {
         
@@ -177,24 +187,28 @@ class MainViewController: UIViewController {
             
             //->Guest ready
             self.isReady(lbl: self.lblGuestReady, their)
+            
             //->User ready
             self.isReady(lbl: self.lblUserReady, selF)
 
             //Change background image of ready button
             if selF == true {
                 self.btnReady.setImage(UIImage(named: "unready"), for: UIControlState.normal)
-            } else {
+            }
+            else {
                 self.btnReady.setImage(UIImage(named: "ready"), for: UIControlState.normal)
             }
             
             //If both ready, timer will start calculating
             if their && selF {
                 self.ready = true
+                
                 //Timer will start
                 if timer == nil {
                     timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerCalc), userInfo: nil, repeats: true)
                 }
-            } else {
+            }
+            else {
                 self.ready = false
                 self.resetTime()
             }
@@ -227,6 +241,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
     //Check ready
     func isReady(lbl: UILabel, _ readY:Bool = true) {
         if readY {
@@ -237,7 +252,8 @@ class MainViewController: UIViewController {
             lbl.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         }
     }
-    //Reset timer and lbl Time 
+    
+    //Reset timer and lbl Time
     func resetTime() {
         //Reset timer
         if timer != nil {
@@ -248,6 +264,7 @@ class MainViewController: UIViewController {
         self.lblTime.text = "Time \(self.count)"
         self.btnReady.setImage(UIImage(named: "ready"), for: UIControlState.normal)
     }
+    
     //Timer calculating time when start game
     func timerCalc() {
         self.count -= 1
@@ -267,6 +284,7 @@ class MainViewController: UIViewController {
         
         self.selection = sender.tag
         self.whichAnswer(self.selection)
+        
         //Hide guest answer
         self.imgGuestChoose.image = #imageLiteral(resourceName: "Icon")
         
@@ -316,6 +334,7 @@ class MainViewController: UIViewController {
                 if let uid:String = MyProfile.Instance.uid {
                     let jsonData:Dictionary<String, Any> = [Contants.Instance.room_id: room_id, Contants.Instance.uid: uid]
                     SocketIOManager.Instance.socketEmit(Commands.Instance.ClientLeaveRoom, jsonData)
+                    
                     //Because server don't response when user is being host ==>
                     _ = self.navigationController?.popViewController(animated: false)
                     

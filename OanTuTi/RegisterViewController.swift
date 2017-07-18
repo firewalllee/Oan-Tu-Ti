@@ -60,6 +60,7 @@ class RegisterViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
         //Get free top space to scroll up when keyboard will show or hiden
         self.spaceTopFree = self.getTopFreeHeight(wrapView)
     }
@@ -81,14 +82,17 @@ class RegisterViewController: UIViewController {
     func receiveEvent(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             if let isSuccess:Bool = response[Contants.Instance.isSuccess] as? Bool {
+                
                 //Register successfully
                 if isSuccess {
                     if self.delegate != nil {
                         self.delegate?.userEmail(self.txtEmail.text!)
+                        
                         //------------Reset textfield------------------
                         self.txtEmail.text = Contants.Instance.null
                         self.txtPassword.text = Contants.Instance.null
                         self.txtNickname.text = Contants.Instance.null
+                        
                         //-------Dismiss loading alert-----------------
                         //--Fix: bring this code to completion--->
                         //self.dismiss(animated: true, completion: nil)
@@ -96,14 +100,17 @@ class RegisterViewController: UIViewController {
                             
                             //-----------Back to login screen--------------
                             self.dismiss(animated: true, completion: nil)
-//                            self.showNotification(title: "Success!", message: "Congratulate. Register successful!")
                         }
-                        
                     }
                     
-                } else {    //Login failed
+                }
+                    
+                //Login failed
+                else {
+                    
                     //-------Dismiss loading alert-----------------
                     self.dismiss(animated: true) {
+                       
                         //-------Show message from server alert--------
                         if let message:String = response[Contants.Instance.message] as? String {
                             self.showNotification(title: "Notice", message: message)

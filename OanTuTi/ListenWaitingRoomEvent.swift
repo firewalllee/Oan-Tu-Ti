@@ -13,9 +13,11 @@ class ListenWaitingRoomEvent {
     init() {}
     
     static func ListenWaitingRoomResponse() {
+        
         //Player leave room
         SocketIOManager.Instance.socket.on(Commands.Instance.PlayerLeaveRoom) { (data, ack) in
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+                
                 //Send this delegate to Waiting room screen
                 NotificationCenter.default.post(name: NotificationCommands.Instance.waitingDelegate, object: response)
             }
@@ -39,10 +41,12 @@ class ListenWaitingRoomEvent {
         //Client Ready
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientReadyRs) { (data, ack) in
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+                
                 //Send to waiting room
                 NotificationCenter.default.post(name: NotificationCommands.Instance.readyDelegate, object: response)
             }
         }
+        
         //Client start game
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientsStartPlayingRs) { (data, ack) in
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {

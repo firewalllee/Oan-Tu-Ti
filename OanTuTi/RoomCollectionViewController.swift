@@ -42,8 +42,10 @@ class RoomCollectionViewController: UICollectionViewController {
         ////----Add observation-----------------
         //->Rooms List
         NotificationCenter.default.addObserver(self, selector: #selector(self.receiveEvent), name: NotificationCommands.Instance.updateRoomDelegate , object: nil)
+        
         //->Create Room
         NotificationCenter.default.addObserver(self, selector: #selector(self.receiveCreateRoomEvent), name: NotificationCommands.Instance.createRoomDelegate, object: nil)
+        
         //->Join Room
         NotificationCenter.default.addObserver(self, selector: #selector(self.receiveJoinRoomEvent), name: NotificationCommands.Instance.joinRoomDelegate, object: nil)
         
@@ -57,8 +59,10 @@ class RoomCollectionViewController: UICollectionViewController {
     //MARK: - Delegate from Listener Class
     //->Rooms List
     func receiveEvent() {
+        
         //Let main queue to update table view
         DispatchQueue.main.async {
+        
             //Edit here!
             self.rooms = ListenRoomEvent.Instance.getRooms()
             self.totalPage = ListenRoomEvent.Instance.getTotalPage()
@@ -66,11 +70,13 @@ class RoomCollectionViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
     }
+    
     //->Create Room
     func receiveCreateRoomEvent(notification:Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             
             if let isSuccess: Bool = response[Contants.Instance.isSuccess] as? Bool {
+                
                 //-------CheckUpdate----------------------------
                 if isSuccess {
                     if let room_id:String = response[Contants.Instance.room_id] as? String {
@@ -79,7 +85,8 @@ class RoomCollectionViewController: UICollectionViewController {
                     self.dismiss(animated: true) {
                         self.performSegue(withIdentifier: Contants.Instance.segueWaiting, sender: nil)
                     }
-                } else {
+                }
+                else {
                     self.dismiss(animated: true) {
                         if let message: String = response[Contants.Instance.message] as? String {
                             self.showNotification(title: "Notice!", message: message)
@@ -89,6 +96,7 @@ class RoomCollectionViewController: UICollectionViewController {
             }
         }
     }
+    
     //->Join Room
     func receiveJoinRoomEvent(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
@@ -111,11 +119,13 @@ class RoomCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         // #warning Incomplete implementation, return the number of sections
         return self.rooms.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         // #warning Incomplete implementation, return the number of items
         return self.rooms[section].count
     }
@@ -132,10 +142,12 @@ class RoomCollectionViewController: UICollectionViewController {
         cell.contentView.backgroundColor = UIColor.init(Hex: 0xd4ded7)
         
         if rooms.count > 0 {
+            
             //Get room name
             if let room_name:String = self.rooms[indexPath.section][indexPath.row].roomName {
                 cell.lblRoomName.text = room_name
             }
+            
             //Get money bet
             if let money:Double = self.rooms[indexPath.section][indexPath.row].moneyBet {
                 cell.lblMoney.text = "$\(Int(money))"
@@ -160,6 +172,7 @@ class RoomCollectionViewController: UICollectionViewController {
         let section:Int = indexPath.section
         
         if self.isEmit {
+            
             //Kick flag, make collectionView can reload data
             if index >= 9 && self.pageNeedReload == section + 1 && self.pageNeedReload < self.totalPage {
                 self.pageNeedReload += 1
@@ -189,6 +202,7 @@ class RoomCollectionViewController: UICollectionViewController {
         if segue.identifier == Contants.Instance.segueWaiting {
             
             if let waitingRoom:WaitingViewController = segue.destination as? WaitingViewController {
+                
                 //transfer room infor to next screen using prepare for segue function
                 waitingRoom.thisRoom = self.nextRoom
                 waitingRoom.isHost = self.isHost
@@ -200,6 +214,7 @@ class RoomCollectionViewController: UICollectionViewController {
     
     //MARK: - Join room task
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         //Start indicator waiting
         self.waitingIndicator(with: self.indicator)
         
@@ -218,6 +233,7 @@ class RoomCollectionViewController: UICollectionViewController {
         if let uid:String = MyProfile.Instance.uid {
             SocketIOManager.Instance.socketEmit(Commands.Instance.ClientJoinRoom, [Contants.Instance.room_id: rooms[indexPath.section][indexPath.row].id!, Contants.Instance.uid: uid])
         }
+        
         //Get next room infor
         self.nextRoom = rooms[indexPath.section][indexPath.row]
         self.isHost = false
@@ -227,14 +243,17 @@ class RoomCollectionViewController: UICollectionViewController {
     //MARK: - Binding data to Cell of collectionView
     func bindImage(imgView: UIImageView, state:String) {
         if state == Contants.Instance.joinable {
+            
             // Joinable
             imgView.image = UIImage(named: "1people")
             imgView.tintColor = UIColor.init(Hex: 0x07cc28)
         } else if state == Contants.Instance.full {
+            
             // Full
             imgView.image = UIImage(named: "2people")
             imgView.tintColor = UIColor.init(Hex: 0x07cc28)
         } else {
+            
             // Playing
             imgView.image = UIImage(named: "2people")
             imgView.tintColor = UIColor.init(Hex: 0xff3e1c)
@@ -274,17 +293,22 @@ class RoomCollectionViewController: UICollectionViewController {
             
             let roomName: String = txtRoomName.text!
             if let money_bet:Double = Double(txtMoneyBet.text!) {
+                
                 // Check room name and bet.
                 if roomName != Contants.Instance.null {
+                    
                     // Waiting indicator
                     self.waitingIndicator(with: self.indicator)
+                    
                     //get infor of next room
                     self.nextRoom.roomName = roomName
                     self.nextRoom.moneyBet = money_bet
                     self.isHost = true
+                    
                     //Init json data to push to server
                     if let uid:String = MyProfile.Instance.uid {
                         let jsonData:Dictionary<String, Any> = [Contants.Instance.room_name: roomName, Contants.Instance.money_bet: money_bet, Contants.Instance.host_uid: uid]
+                        
                         //Emit to server
                         if let coin:Int = MyProfile.Instance.coin_card {
                             if Int(money_bet) > coin {

@@ -51,7 +51,6 @@ class ProfileViewController: UIViewController {
         
         //Add observation from Listener class
         NotificationCenter.default.addObserver(self, selector: #selector(self.receiveEvent), name: NotificationCommands.Instance.profileDelegate, object: nil)
-
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.showKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.hideKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -60,19 +59,21 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(false)
         
         //Init 3 textfield will hide and scale to 0.1 belong y coordinate
-
         if !self.isUpdating {
             self.wrapTextfieldHeightConstraint.constant = defaultHeightUIViewContraint
             self.wrapTextfield.isHidden = true
             self.tapImage.isEnabled = false
             self.wrapTextfield.layer.transform = CATransform3DMakeScale(1, 0.1, 1)
         }
+        
         //Load user infor
         self.loadInfo()
+        
         //Make scale animation
         self.wrapView.rotateXAxis()
         
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
@@ -89,9 +90,11 @@ class ProfileViewController: UIViewController {
 
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             if let isSuccess: Bool = response[Contants.Instance.isSuccess] as? Bool {
+                
                 //-------CheckUpdate----------------------------
                 if isSuccess {
                     if let newAvatarUrl: String = response[Contants.Instance.newAvatarUrl] as? String {
+                        
                         //myProfile.update(name: self.txtDisplayName.text!, avatar: newAvatarUrl)
                         MyProfile.Instance.name = self.txtDisplayName.text!
                         if let url:URL = URL(string: newAvatarUrl) {
@@ -104,17 +107,22 @@ class ProfileViewController: UIViewController {
                         
                         self.lblDisplayName.text = MyProfile.Instance.name
                     }
+                    
                     //-------Clean textfield password--------------
                     self.txtPassword.text = Contants.Instance.null
                     self.txtNewPassword.text = Contants.Instance.null
                     self.isUpdating = false
+                    
                     //-------Dismiss loading alert-----------------
                     self.dismiss(animated: true) {
                         self.showNotification(title: "Notice!", message: "Update successful!")
                     }
-                } else {
+                }
+                else {
+                    
                     //-------Dismiss loading alert-----------------
                     self.dismiss(animated: true) {
+                        
                         //-------Clean textfield password--------------
                         self.txtPassword.text = Contants.Instance.null
                         self.txtNewPassword.text = Contants.Instance.null
@@ -209,6 +217,7 @@ class ProfileViewController: UIViewController {
             UIView.animate(withDuration: self.durationUIViewAnimate, animations: {
                 self.wrapTextfield.layer.transform = CATransform3DMakeScale(1, 1, 1)
                 }, completion: { (true) in
+                    
                     //height of 3 textfield will be defaults
                     self.wrapTextfieldHeightConstraint.constant = self.wrapTextfieldHeight
                     UIView.animate(withDuration: self.durationUIViewAnimate) {
@@ -236,6 +245,7 @@ class ProfileViewController: UIViewController {
         } else if nickname == Contants.Instance.null {
             self.showNotification(title: "Nickname!", message: "Please fill out your Nickname")
         } else if newPass == Contants.Instance.null {
+            
             //Waiting indicator
             self.waitingIndicator(with: indicator)
             if let imgData:Data = MyProfile.Instance.imgData {
@@ -279,11 +289,11 @@ class ProfileViewController: UIViewController {
             scrollView.setContentOffset(point, animated: true)
         }
     }
+    
     // Scroll view down when keyboard popdown.
     func hideKeyboard(_ notification:Notification) {
         bottomContainerContraint.constant = defaultHeightUIViewContraint
     }
-    
 }
 
 //MARK: - Make extension ProfileViewController
@@ -312,5 +322,3 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     }
     
 }
-
-

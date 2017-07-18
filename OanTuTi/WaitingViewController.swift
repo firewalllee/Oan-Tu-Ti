@@ -15,16 +15,19 @@ class WaitingViewController: UIViewController {
     @IBOutlet weak var lblMoneyBet: UILabel!
     @IBOutlet weak var lblBestOf: UILabel!
     @IBOutlet weak var btnUpdate: UIBarButtonItem!
+    
     ////-> Guest
     @IBOutlet weak var lblGuestName: UILabel!
     @IBOutlet weak var imgGuestAvatar: UIImageView!
     @IBOutlet weak var lblGuestReady: UILabel!
     @IBOutlet weak var lblGuestMoney: UILabel!
+    
     ////-> User
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var imgUserAvatar: UIImageView!
     @IBOutlet weak var lblUserMoney: UILabel!
     @IBOutlet weak var btnReadyStart: UIButton!
+    
     
     //MARK: - Declarations
     var thisRoom:Room = Room()
@@ -46,14 +49,19 @@ class WaitingViewController: UIViewController {
         //Add observation
         //->Player Leave Room
         NotificationCenter.default.addObserver(self, selector: #selector(self.receivePlayerLeaveRoomEvent), name: NotificationCommands.Instance.waitingDelegate, object: nil)
+        
         //->This user leave Room
         NotificationCenter.default.addObserver(self, selector: #selector(self.userLeaveRoom), name: NotificationCommands.Instance.leaveRoomDelegate, object: nil)
+        
         //->Other player join this room
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerJoinRoom), name: NotificationCommands.Instance.joinRoomDelegate, object: nil)
+        
         //->Update Room delegate
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateRoom), name: NotificationCommands.Instance.updateRoomInfoDelegate, object: nil)
+        
         //Client ready
         NotificationCenter.default.addObserver(self, selector: #selector(self.clientReady), name: NotificationCommands.Instance.readyDelegate, object: nil)
+        
         //Start game
         NotificationCenter.default.addObserver(self, selector: #selector(self.startGame), name: NotificationCommands.Instance.clientSartgameDelegate, object: nil)
         
@@ -101,7 +109,8 @@ class WaitingViewController: UIViewController {
             self.lblUserName.text = self.lblUserName.text! + " (Host)"
             self.nullOtherPlayer()
             
-        } else {
+        }
+        else {
             self.btnReadyStart.setBackgroundImage(#imageLiteral(resourceName: "ready"), for: UIControlState.normal)
             self.btnUpdate.isEnabled = false
             
@@ -111,13 +120,11 @@ class WaitingViewController: UIViewController {
             if let hostAvatar:String = otherUser.avatar {
                 self.imgGuestAvatar.loadAvatar(hostAvatar)
             }
-
         }
     }
     
     //Reset other player
     func nullOtherPlayer(){
-        ////
         self.lblGuestReady.isHidden = true
         self.imgGuestAvatar.isHidden = true
         self.imgGuestAvatar.image = #imageLiteral(resourceName: "avatar")
@@ -125,6 +132,7 @@ class WaitingViewController: UIViewController {
         self.lblGuestMoney.text = "$0"
         self.btnReadyStart.isEnabled = false
     }
+    
     //Get infor of new player join room
     func playerJoin(_ otherUser:User) {
         if let playerName:String = self.otherUser.name {
@@ -154,6 +162,7 @@ class WaitingViewController: UIViewController {
             }
         }
     }
+    
     //-> User leave room
     func userLeaveRoom(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
@@ -168,6 +177,7 @@ class WaitingViewController: UIViewController {
             }
         }
     }
+    
     //-> Other player join room
     func playerJoinRoom(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
@@ -183,6 +193,7 @@ class WaitingViewController: UIViewController {
             otherUserCoin = self.otherUser.coin_card
         }
     }
+    
     //-> Update room info response
     func updateRoom(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
@@ -212,12 +223,14 @@ class WaitingViewController: UIViewController {
             }
         }
     }
+    
     //-> Client Ready
     func clientReady(notification: Notification) {
         if let response:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             guard let ready:Bool = response[Contants.Instance.ready] as? Bool else {
                 return
             }
+            
             //If client ready
             if isHost {
                 if ready {
@@ -229,7 +242,10 @@ class WaitingViewController: UIViewController {
                     self.lblGuestReady.isHidden = true
                     self.btnReadyStart.isEnabled = false
                 }
-            }  else { //host ready start
+            }
+                
+            //host ready start
+            else {
                 if ready {
                     self.btnReadyStart.setBackgroundImage(#imageLiteral(resourceName: "unready"), for: UIControlState.normal)
                 } else {
@@ -239,6 +255,7 @@ class WaitingViewController: UIViewController {
             }
         }
     }
+    
     //-> Client start game
     func startGame(notification: Notification) {
         
@@ -271,6 +288,7 @@ class WaitingViewController: UIViewController {
                 
                 let jsonData:Dictionary<String, Any> = [Contants.Instance.room_id: room_id, Contants.Instance.uid: uid]
                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientLeaveRoom, jsonData)
+                
                 //Because server don't response when user is being host ==>
                 _ = self.navigationController?.popViewController(animated: true)
                 
@@ -343,6 +361,7 @@ class WaitingViewController: UIViewController {
             , animationStyle: .topToBottom)
         
     }
+    
     //Update room infor emit function
     func prepareForEmit(name: String, moneyBet: Double, best_of: Int) {
         if name != Contants.Instance.null && moneyBet > emptyCoinCard {
@@ -370,6 +389,7 @@ class WaitingViewController: UIViewController {
     @IBAction func btnReadyStart(_ sender: UIButton) {
         
         if self.isHost {
+            
             //MARK: - Play button on host user
             //Perform segue to starting game 
             if let room_id:String = thisRoom.id {
@@ -377,7 +397,9 @@ class WaitingViewController: UIViewController {
                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientsStartPlaying, jsonData)
             }
             
-        } else {
+        }
+        else {
+            
             //check user money with room bet money
             if (MyProfile.Instance.coin_card ?? 0) < Int(self.thisRoom.moneyBet ?? 0) {
                 self.showNotification(title: "Notice!", message: "You don't have enough money to play this room!")

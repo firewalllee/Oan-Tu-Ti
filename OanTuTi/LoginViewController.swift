@@ -45,17 +45,22 @@ class LoginViewController: UIViewController {
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientLoginRs) { (data, ack) in
             if let response: Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
                 if let isSuccess: Bool = response[Contants.Instance.isSuccess] as? Bool {
+                    
                     //-------CheckLogin----------------------------
                     if isSuccess {
+                        
                         //---------------------------------------------
                         if let jsonUser:Dictionary<String, Any> = response[Contants.Instance.user] as? Dictionary<String, Any> {
                             MyProfile.Instance = MyProfile(jsonUser)
                         }
+                        
                         //-------Get user infor-----------------------
                         MyProfile.Instance.UserEmail = self.txtEmail.text!
+                        
                         //-------Textfield reset-----------------------
                         self.txtEmail.text = Contants.Instance.null
                         self.txtPassword.text = Contants.Instance.null
+                        
                         //-------Dismiss loading alert-----------------
                         self.dismiss(animated: true, completion: { 
                             self.performSegue(withIdentifier: Contants.Instance.segueMenu, sender: nil)
@@ -65,8 +70,10 @@ class LoginViewController: UIViewController {
                         
                         //-------Dismiss loading alert-----------------
                         self.dismiss(animated: true) {
+                            
                             //-------Reset textfield password--------------
                             self.txtPassword.text = Contants.Instance.null
+                            
                             //-------Show message from server alert--------
                             if let message: String = response[Contants.Instance.message] as? String {
                                 self.showNotification(title: "Notice!", message: message)
@@ -130,6 +137,7 @@ class LoginViewController: UIViewController {
     func userEmail(_ userEmail: String) {
         self.txtEmail.text = userEmail
     }
+    
     //MARK: - Register tasks
     @IBAction func btnRegister(_ sender: AnyObject) {
         self.performSegue(withIdentifier: Contants.Instance.segueRegister, sender: nil)

@@ -43,6 +43,7 @@ extension UIViewController {
         
         return listSelectSource
     }
+    
     //Get the height of top wrap view
     func getTopFreeHeight(_ wrapView: UIView) -> CGFloat {
         if let naviHeight = self.navigationController?.navigationBar.frame.height {
@@ -72,6 +73,7 @@ extension UIViewController {
         indicator.activityIndicatorViewStyle = .gray
         
         self.present(alert, animated: true) {
+            
             //Properties
             indicator.frame = CGRect(x: alert.view.frame.width/2, y: alert.view.frame.height/2, width: 0, height: 0)
             alert.view.addSubview(indicator)
@@ -112,6 +114,7 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
     }
+    
     //-----Scale animation
     func scaleAnimation() {
         
@@ -125,6 +128,7 @@ extension UIView {
             })
         }
     }
+    
     ////---------Rotate x axis-----------
     func rotateXAxis() {
         self.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi/2), 0, 1, 0)

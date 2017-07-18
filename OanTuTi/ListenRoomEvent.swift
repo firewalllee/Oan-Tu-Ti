@@ -29,7 +29,6 @@ class ListenRoomEvent {
     func setPageNeedReload(_ page: Int) {
         self.pageNeedReload = page
     }
-    ///--------------------------------------
     
     func ListenRoomsList() {
         
@@ -49,15 +48,18 @@ class ListenRoomEvent {
                     }
                     if self.rooms.count > 0 {
                         self.rooms[0] = firstRooms
-                    } else {
+                    }
+                    else {
                         self.rooms.append(firstRooms)
                     }
+                    
                     //send delegate to RoomCollectionView
                     if let currentWindow = UIApplication.topViewController() {
                         if currentWindow is RoomCollectionViewController {
                             NotificationCenter.default.post(name: NotificationCommands.Instance.updateRoomDelegate, object: nil)
                         }
                     }
+                    
                     //Reload current screen
                     if self.totalPage >= 2 {
                         SocketIOManager.Instance.socketEmit(Commands.Instance.ClientGetRoomByPage, [Contants.Instance.page: self.pageNeedReload])
@@ -69,6 +71,7 @@ class ListenRoomEvent {
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientGetRoomByPageRs) { (data, ack) in
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
                 if let roomList:Array<Dictionary<String, Any>> = response[Contants.Instance.rooms] as? Array<Dictionary<String, Any>> {
+                    
                     //reset first
                     var continueRooms:Array<Room> = Array<Room>()
                     for room in roomList {
@@ -78,7 +81,8 @@ class ListenRoomEvent {
                         let current:Int = self.pageNeedReload - 1
                         if self.rooms.count > current {
                             self.rooms[current] = continueRooms
-                        } else {
+                        }
+                        else {
                             self.rooms.append(continueRooms)
                         }
                     }

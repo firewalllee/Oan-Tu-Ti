@@ -16,6 +16,7 @@ class ListenMatchResultEvent {
         // Recive match result from server .
         SocketIOManager.Instance.socket.on(Commands.Instance.ServerSendMatchResult) { (data, ack) in
             if let response: Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+                
                 // Send this delegate to Main screen.
                 NotificationCenter.default.post(name: NotificationCommands.Instance.matchResultDelegate, object: response)
             }

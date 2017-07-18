@@ -21,8 +21,10 @@ class Contants {
     let segueProfile: String = "segueProfile"
     let segueWaiting: String = "segueWaiting"
     let segueMain: String = "segueMain"
+    
     //---------------CellID------------------------
     let cellRoom: String = "roomCell"
+    
     //---------------Contants----------------------
     let avatar: String = "avatar"
     let best_of:String = "best_of"

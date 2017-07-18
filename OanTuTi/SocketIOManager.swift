@@ -19,6 +19,7 @@ class SocketIOManager {
     func establishConnection() {
         socket.connect()
     }
+    
     //Logout when into background
     func closeConnection() {
         //Static set to myProfile variables
