@@ -127,7 +127,7 @@ extension UIView {
     }
     ////---------Rotate x axis-----------
     func rotateXAxis() {
-        self.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2), 0, 1, 0)
+        self.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi/2), 0, 1, 0)
         
         UIView.animate(withDuration: 0.7) {
             self.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0)
@@ -136,7 +136,7 @@ extension UIView {
     
     ////---------Rotate x axis-----------
     func rotateYAxis() {
-        self.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2), 1, 0, 0)
+        self.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi/2), 1, 0, 0)
         
         UIView.animate(withDuration: 0.7) {
             self.layer.transform = CATransform3DMakeRotation(0, 1, 0, 0)

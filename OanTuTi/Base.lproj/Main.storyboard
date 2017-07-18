@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jj1-FS-hAn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840.8" y="-397.15142428785612"/>
+            <point key="canvasLocation" x="1841" y="-398"/>
         </scene>
         <!--Menu-->
         <scene sceneID="6GM-G9-f0c">
@@ -1211,8 +1211,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QsY-PJ-tEg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lb4-xn-Yiu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1308,6 +1306,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRZ-La-nDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

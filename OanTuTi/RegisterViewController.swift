@@ -93,9 +93,12 @@ class RegisterViewController: UIViewController {
                         //--Fix: bring this code to completion--->
                         //self.dismiss(animated: true, completion: nil)
                         self.dismiss(animated: true) {
-                        //-----------Back to login screen--------------
-                            _ = self.navigationController?.popViewController(animated: true)
+                            
+                            //-----------Back to login screen--------------
+                            self.dismiss(animated: true, completion: nil)
+//                            self.showNotification(title: "Success!", message: "Congratulate. Register successful!")
                         }
+                        
                     }
                     
                 } else {    //Login failed
@@ -107,7 +110,6 @@ class RegisterViewController: UIViewController {
                         }
                     }
                 }
-                
             }
         }
     }
@@ -157,6 +159,7 @@ class RegisterViewController: UIViewController {
                 
                 let jsonData: Dictionary<String, Any> = [Contants.Instance.email: email, Contants.Instance.pass: pass, Contants.Instance.nickname: nickname, Contants.Instance.file: imgData]
                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientSignUp, jsonData)
+
             }
         }
     }
