@@ -1308,6 +1308,9 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <segue destination="h6d-8i-JR8" kind="show" identifier="segueWaiting" id="qh6-hf-zgw"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRZ-La-nDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

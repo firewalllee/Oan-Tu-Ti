@@ -139,6 +139,7 @@
 				7EE419CC1DDD864E00CFD264 /* ListenMatchResultEvent.swift */,
 				BE3CFD2D1DDCADBA00FD0C89 /* ListenPlayingEvent.swift */,
 				BE2FC3D61DD7168900203354 /* NotificationCommands.swift */,
+				BEF37DC91DCC5858008780D8 /* SocketIOManager.swift */,
 			);
 			name = ListenerController;
 			sourceTree = "<group>";
@@ -197,7 +198,6 @@
 				BE0B02F01DD570FB006CD237 /* WaitingViewController.swift */,
 				7EF153321DDC37D500FC1F01 /* MainViewController.swift */,
 				BE7F87CD1DD46DA000C76DD3 /* ExtensionUIViewController.swift */,
-				BEF37DC91DCC5858008780D8 /* SocketIOManager.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

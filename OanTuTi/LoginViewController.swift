@@ -66,7 +66,8 @@ class LoginViewController: UIViewController {
                             self.performSegue(withIdentifier: Contants.Instance.segueMenu, sender: nil)
                         })
 
-                    } else {
+                    }
+                    else {
                         
                         //-------Dismiss loading alert-----------------
                         self.dismiss(animated: true) {
@@ -83,8 +84,8 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         self.ViewsProperties()
@@ -94,8 +95,6 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(true)
         self.spaceTopFree = self.getTopFreeHeight(wrapView)
     }
-    
-
     
     //MARK: - setup properties of view
     func ViewsProperties() {
@@ -107,7 +106,8 @@ class LoginViewController: UIViewController {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 0 {
             txtPassword.becomeFirstResponder()
-        } else if textField.tag == 1 {
+        }
+        else if textField.tag == 1 {
             textField.resignFirstResponder()
             self.btnLogin(UIButton())
         }
@@ -127,10 +127,10 @@ class LoginViewController: UIViewController {
             let jsonData: Dictionary<String, Any> = [Contants.Instance.email: email, Contants.Instance.pass: pass]
             SocketIOManager.Instance.socketEmit(Commands.Instance.ClientLogin, jsonData)
             
-        } else {
+        }
+        else {
             self.showNotification(title: "Notice", message: "Please fill out information!")
         }
-        
     }
     
     //MARK: - Delegate fill textfield email when back from register screen
@@ -171,7 +171,6 @@ extension LoginViewController:ProtocolUserEmail {
             }
         }
     }
-    
 }
 
 

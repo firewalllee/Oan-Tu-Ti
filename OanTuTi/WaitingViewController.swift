@@ -153,7 +153,8 @@ class WaitingViewController: UIViewController {
         if let _:Dictionary<String, Any> = notification.object as? Dictionary<String, Any> {
             if self.isHost {
                 self.nullOtherPlayer()
-            } else {
+            }
+            else {
                 self.nullOtherPlayer()
                 self.lblUserName.text = "\(self.lblUserName.text!) (Host)"
                 self.btnReadyStart.setBackgroundImage(#imageLiteral(resourceName: "start"), for: UIControlState.normal)
@@ -169,7 +170,8 @@ class WaitingViewController: UIViewController {
             if let isSuccess:Bool = response[Contants.Instance.isSuccess] as? Bool {
                 if isSuccess {
                     _ = self.navigationController?.popViewController(animated: true)
-                } else {
+                }
+                else {
                     if let message:String = response[Contants.Instance.message] as? String {
                         self.showNotification(title: "Notice", message: message)
                     }
@@ -218,7 +220,8 @@ class WaitingViewController: UIViewController {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 self.showNotification(title: "Notice", message: "Can't update room information")
             }
         }
@@ -237,7 +240,8 @@ class WaitingViewController: UIViewController {
                     self.btnUpdate.isEnabled = false
                     self.btnReadyStart.isEnabled = true
                     self.lblGuestReady.isHidden = false
-                } else {
+                }
+                else {
                     self.btnUpdate.isEnabled = true
                     self.lblGuestReady.isHidden = true
                     self.btnReadyStart.isEnabled = false
@@ -248,7 +252,8 @@ class WaitingViewController: UIViewController {
             else {
                 if ready {
                     self.btnReadyStart.setBackgroundImage(#imageLiteral(resourceName: "unready"), for: UIControlState.normal)
-                } else {
+                }
+                else {
                     self.btnReadyStart.setBackgroundImage(#imageLiteral(resourceName: "ready"), for: UIControlState.normal)
                 }
                 self.isClientReady = true // Client have been ready
@@ -270,14 +275,13 @@ class WaitingViewController: UIViewController {
                     self.matchId = match_id
                     self.performSegue(withIdentifier: Contants.Instance.segueMain, sender: nil)
                 }
-            } else {
+            }
+            else {
                 if let message:String = response[Contants.Instance.message] as? String {
                     self.showNotification(title: "Notice", message: message)
                 }
             }
-            
         }
-        
     }
     
     //MARK: - Leave room task
@@ -354,7 +358,6 @@ class WaitingViewController: UIViewController {
             if let moneyBet:Double = Double(txtMoneyBet.text!) {
                 self.prepareForEmit(name: name, moneyBet: moneyBet, best_of: bo)
             }
-            
         }
         
         alertView.showEdit("Updating Room", subTitle: "", closeButtonTitle: "Cancel", colorStyle: 0xc38cff, colorTextButton: 0xfc0217
@@ -396,7 +399,6 @@ class WaitingViewController: UIViewController {
                 let jsonData:Dictionary<String, Any> = [Contants.Instance.room_id: room_id]
                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientsStartPlaying, jsonData)
             }
-            
         }
         else {
             
@@ -413,7 +415,6 @@ class WaitingViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     //MARK: - Transfer data to next screen
@@ -427,7 +428,6 @@ class WaitingViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension WaitingViewController:UIPickerViewDelegate, UIPickerViewDataSource {

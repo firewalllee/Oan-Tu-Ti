@@ -38,5 +38,4 @@ class SocketIOManager {
         
         socket.emit(Commands.Instance.ClientLogout, uid)
     }
-    
 }

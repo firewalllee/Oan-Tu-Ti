@@ -93,11 +93,9 @@ class ListenRoomEvent {
                             NotificationCenter.default.post(name: NotificationCommands.Instance.updateRoomDelegate, object: nil)
                         }
                     }
-                    
                 }
             }
         }
-        
     }
     
     func ListenCreateRoom() {
@@ -115,7 +113,6 @@ class ListenRoomEvent {
             if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
                 NotificationCenter.default.post(name: NotificationCommands.Instance.joinRoomDelegate, object: response)
             }
-         }
-        
+        }
     }
 }

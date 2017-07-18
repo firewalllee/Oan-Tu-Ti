@@ -21,9 +21,6 @@ class ListenRegisterEvent {
                 //Send delegate to Register screen
                 NotificationCenter.default.post(name: NotificationCommands.Instance.signupDelegate, object: response)
             }
-            
         }
-        
     }
-    
 }

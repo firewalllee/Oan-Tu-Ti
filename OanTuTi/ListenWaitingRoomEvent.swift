@@ -53,7 +53,5 @@ class ListenWaitingRoomEvent {
                 NotificationCenter.default.post(name: NotificationCommands.Instance.clientSartgameDelegate, object: response)
             }
         }
-        
     }
-    
 }

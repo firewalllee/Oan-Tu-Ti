@@ -224,19 +224,22 @@ class MainViewController: UIViewController {
         case 1:
             if me {
                 self.imgUserChoose.image = #imageLiteral(resourceName: "bua")
-            } else {
+            }
+            else {
                 self.imgGuestChoose.image = #imageLiteral(resourceName: "bua")
             }
         case 2:
             if me {
                 self.imgUserChoose.image = #imageLiteral(resourceName: "bao")
-            } else {
+            }
+            else {
                 self.imgGuestChoose.image = #imageLiteral(resourceName: "bao")
             }
         default:
             if me {
                 self.imgUserChoose.image = #imageLiteral(resourceName: "keo")
-            } else {
+            }
+            else {
                 self.imgGuestChoose.image = #imageLiteral(resourceName: "keo")
             }
         }
@@ -247,7 +250,8 @@ class MainViewController: UIViewController {
         if readY {
             lbl.text = "Ready"
             lbl.textColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
-        } else {
+        }
+        else {
             lbl.text = "Unready"
             lbl.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         }
@@ -274,7 +278,8 @@ class MainViewController: UIViewController {
             self.timer = nil
             self.lblMatchResult.text = "Draw"
             self.lblMatchResult.textColor = #colorLiteral(red: 0.9997927547, green: 0.9720230699, blue: 0, alpha: 1)
-        } else {
+        }
+        else {
             self.lblTime.text = "Time \(self.count)"
         }
     }

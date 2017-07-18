@@ -108,7 +108,8 @@ class RoomCollectionViewController: UICollectionViewController {
                         self.showNotification(title: "Notice", message: message)
                     }
                 }
-            } else {
+            }
+            else {
                 self.hostUser = User(response)
                 self.dismiss(animated: true) {
                     self.performSegue(withIdentifier: Contants.Instance.segueWaiting, sender: nil)
@@ -151,7 +152,8 @@ class RoomCollectionViewController: UICollectionViewController {
             //Get money bet
             if let money:Double = self.rooms[indexPath.section][indexPath.row].moneyBet {
                 cell.lblMoney.text = "$\(Int(money))"
-            } else {
+            }
+            else {
                 cell.lblMoney.text = "$0"
             }
 
@@ -159,7 +161,6 @@ class RoomCollectionViewController: UICollectionViewController {
             if let roomState:String = self.rooms[indexPath.section][indexPath.row].roomState {
                 bindImage(imgView: cell.imgAvatar, state: roomState)
             }
-        
         }
         
         return cell
@@ -194,7 +195,6 @@ class RoomCollectionViewController: UICollectionViewController {
             SocketIOManager.Instance.socketEmit(Commands.Instance.ClientGetRoomByPage, [Contants.Instance.page: pageNeedReload])
             
         }
-        
     }
     
     //MARK:- Prepare for segue
@@ -208,7 +208,6 @@ class RoomCollectionViewController: UICollectionViewController {
                 waitingRoom.isHost = self.isHost
                 waitingRoom.otherUser = self.hostUser
             }
-            
         }
     }
     
@@ -247,12 +246,14 @@ class RoomCollectionViewController: UICollectionViewController {
             // Joinable
             imgView.image = UIImage(named: "1people")
             imgView.tintColor = UIColor.init(Hex: 0x07cc28)
-        } else if state == Contants.Instance.full {
+        }
+        else if state == Contants.Instance.full {
             
             // Full
             imgView.image = UIImage(named: "2people")
             imgView.tintColor = UIColor.init(Hex: 0x07cc28)
-        } else {
+        }
+        else {
             
             // Playing
             imgView.image = UIImage(named: "2people")
@@ -315,13 +316,14 @@ class RoomCollectionViewController: UICollectionViewController {
                                 self.dismiss(animated: true, completion: { 
                                     self.showNotification(title: "Notice!", message: "Your coins did not enough for bet!")
                                 })
-                            } else {
+                            }
+                            else {
                                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientCreateRoom, jsonData)
                             }
                         }
                     }
-                    
-                } else {
+                }
+                else {
                     self.showNotification(title: "Notice!", message: "Fail to create your room. Try again and please make sure you fill in the name and the bet is a number!")
                 }
             }
@@ -333,5 +335,4 @@ class RoomCollectionViewController: UICollectionViewController {
         alertView.showEdit("Create Room", subTitle: "", closeButtonTitle: "Cancel", colorStyle: 0xc38cff, colorTextButton: 0xfc0217
             , circleIconImage: alertViewIcon, animationStyle: .topToBottom)
     }
-
 }

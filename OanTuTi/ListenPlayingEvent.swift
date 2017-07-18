@@ -19,9 +19,5 @@ class ListenPlayingEvent {
                 NotificationCenter.default.post(name: NotificationCommands.Instance.submitDelegate, object: response)
             }
         }
-        
-        
-        
     }
-    
 }

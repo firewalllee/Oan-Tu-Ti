@@ -205,10 +205,12 @@ extension UIImageView {
                         activity.stopAnimating()
                         self.image = UIImage(data: data)
                     })
-                } catch {
+                }
+                catch {
                     activity.stopAnimating()
                 }
-            } else {
+            }
+            else {
                 activity.stopAnimating()
             }
         }
@@ -228,7 +230,8 @@ extension UIApplication {
             
             if let top = moreNavigationController.topViewController , top.view.window != nil {
                 return topViewController(base: top)
-            } else if let selected = tab.selectedViewController {
+            }
+            else if let selected = tab.selectedViewController {
                 return topViewController(base: selected)
             }
         }

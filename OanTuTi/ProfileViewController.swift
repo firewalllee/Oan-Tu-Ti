@@ -100,11 +100,11 @@ class ProfileViewController: UIViewController {
                         if let url:URL = URL(string: newAvatarUrl) {
                             do {
                                 MyProfile.Instance.imgData = try Data(contentsOf: url)
-                            } catch {
+                            }
+                            catch {
                                 MyProfile.Instance.imgData = nil
                             }
                         }
-                        
                         self.lblDisplayName.text = MyProfile.Instance.name
                     }
                     
@@ -130,7 +130,6 @@ class ProfileViewController: UIViewController {
                         if let message: String = response[Contants.Instance.message] as? String {
                             self.showNotification(title: "Notice!", message: message)
                         }
-                        
                     }
                 }
             }
@@ -143,9 +142,11 @@ class ProfileViewController: UIViewController {
         
         if textField.tag == 0 {
             self.txtPassword.becomeFirstResponder()
-        } else if textField.tag == 1 {
+        }
+        else if textField.tag == 1 {
             self.txtNewPassword.becomeFirstResponder()
-        } else {
+        }
+        else {
             textField.resignFirstResponder()
             self.btnEditUpdate(self.btnEdit)
         }
@@ -184,7 +185,6 @@ class ProfileViewController: UIViewController {
         if let imgData:Data = MyProfile.Instance.imgData {
             self.imgAvatar.image = UIImage(data: imgData)
         }
-        
     }
     
     
@@ -206,7 +206,6 @@ class ProfileViewController: UIViewController {
                         self.tapImage.isEnabled = false
                         self.btnEdit.setTitle("Edit", for: .normal)
                     })
-                    
             })
             self.emitUpdate()
 //            self.isUpdating = false
@@ -226,9 +225,7 @@ class ProfileViewController: UIViewController {
                     }
             })
             self.isUpdating = true
-
         }
-        
     }
     
     func emitUpdate() {
@@ -240,11 +237,14 @@ class ProfileViewController: UIViewController {
         
         if oldPass == Contants.Instance.null {
             self.isUpdating = false
-        } else if newPass.characters.count != emptyCharacters && newPass.characters.count < minimumCharacters {
+        }
+        else if newPass.characters.count != emptyCharacters && newPass.characters.count < minimumCharacters {
             self.showNotification(title: "Password!", message: "Your new password must be at least 6 characters")
-        } else if nickname == Contants.Instance.null {
+        }
+        else if nickname == Contants.Instance.null {
             self.showNotification(title: "Nickname!", message: "Please fill out your Nickname")
-        } else if newPass == Contants.Instance.null {
+        }
+        else if newPass == Contants.Instance.null {
             
             //Waiting indicator
             self.waitingIndicator(with: indicator)
@@ -252,7 +252,8 @@ class ProfileViewController: UIViewController {
                 let jsonData: Dictionary<String, Any> = [Contants.Instance.email: email, Contants.Instance.oldPass: oldPass, Contants.Instance.newPass: oldPass, Contants.Instance.file: imgData, Contants.Instance.nickname: nickname]
                 SocketIOManager.Instance.socketEmit(Commands.Instance.ClientUpdateProfile, jsonData)
             }
-        } else {
+        }
+        else {
             self.waitingIndicator(with: self.indicator)
             if let imgData:Data = MyProfile.Instance.imgData {
                 let jsonData: Dictionary<String, Any> = [Contants.Instance.email: email, Contants.Instance.oldPass: oldPass, Contants.Instance.newPass: newPass, Contants.Instance.file: imgData, Contants.Instance.nickname: nickname]
@@ -310,7 +311,8 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
             }
             if imageValue > 2000 {
                 MyProfile.Instance.imgData = UIImageJPEGRepresentation(imageSelected, 0.5)
-            } else {
+            }
+            else {
                 MyProfile.Instance.imgData = UIImagePNGRepresentation(imageSelected)
             }
             if let imgData:Data = MyProfile.Instance.imgData {
@@ -320,5 +322,4 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         }
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

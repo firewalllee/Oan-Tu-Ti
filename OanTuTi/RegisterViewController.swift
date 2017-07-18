@@ -127,9 +127,11 @@ class RegisterViewController: UIViewController {
         
         if textField.tag == 0 {
             self.txtPassword.becomeFirstResponder()
-        } else if textField.tag == 1 {
+        }
+        else if textField.tag == 1 {
             self.txtNickname.becomeFirstResponder()
-        } else if textField.tag == 2 {
+        }
+        else if textField.tag == 2 {
             textField.resignFirstResponder()
             self.btnRegister(self)
         }
@@ -153,10 +155,12 @@ class RegisterViewController: UIViewController {
         
         if pass.characters.count < 6 {
             self.showNotification(title: "Password!", message: "Your password must be at least 6 characters")
-        } else {
+        }
+        else {
             if nickname == Contants.Instance.null {
                 self.showNotification(title: "Nickname!", message: "Please fill out your Nickname")
-            } else {
+            }
+            else {
                 //Waiting indicator
                 self.waitingIndicator(with: indicator)
                 
@@ -245,7 +249,8 @@ extension RegisterViewController: UINavigationControllerDelegate, UIImagePickerC
             }
             if imageValue > 2000 {
                 imgData = UIImageJPEGRepresentation(imageSelected, 0.5)
-            } else {
+            }
+            else {
                 imgData = UIImagePNGRepresentation(imageSelected)
             }
             
@@ -253,7 +258,6 @@ extension RegisterViewController: UINavigationControllerDelegate, UIImagePickerC
         }
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 
