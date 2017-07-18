@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QoE-od-wwI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QoE-od-wwI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -151,6 +152,9 @@
                                             <constraint firstAttribute="height" constant="60" id="qhP-6A-wd6"/>
                                         </constraints>
                                         <state key="normal" image="play"/>
+                                        <connections>
+                                            <segue destination="ffH-ep-5RK" kind="show" identifier="segueRoom" id="Jvf-af-GWO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niR-Fv-U5K">
                                         <rect key="frame" x="106.5" y="389" width="130" height="60"/>
@@ -268,7 +272,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tK-XS-MlL" userLabel="Room Infor">
-                                <rect key="frame" x="16" y="64" width="343" height="89"/>
+                                <rect key="frame" x="16" y="20" width="343" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phòng Víp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW8-hG-JHg">
                                         <rect key="frame" x="8" y="5" width="327" height="35"/>
@@ -308,7 +312,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEw-ro-LcF" userLabel="Player1 View">
-                                <rect key="frame" x="16" y="163" width="343" height="222.5"/>
+                                <rect key="frame" x="16" y="119" width="343" height="222.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="pc0-Lm-TKw">
                                         <rect key="frame" x="8" y="58" width="106.5" height="106.5"/>
@@ -370,7 +374,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-Ra-cGD">
-                                <rect key="frame" x="16" y="390.5" width="343" height="39"/>
+                                <rect key="frame" x="16" y="346.5" width="343" height="83"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="33"/>
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1222,8 +1226,96 @@
             </objects>
             <point key="canvasLocation" x="2604" y="-397.15142428785612"/>
         </scene>
+        <!--Room-->
+        <scene sceneID="EqS-UX-xL0">
+            <objects>
+                <collectionViewController id="ffH-ep-5RK" customClass="RoomCollectionViewController" customModule="OanTuTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="1ro-td-g7S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CzX-7q-A2E">
+                            <size key="itemSize" width="140" height="140"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="roomCell" id="GeL-2T-ahV" customClass="RoomCell" customModule="OanTuTi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBE-Ww-eKe">
+                                            <rect key="frame" x="5" y="3" width="130" height="24"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                            <color key="textColor" red="0.9993599057" green="0.14970120789999999" blue="0.0082355923949999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1people" translatesAutoresizingMaskIntoConstraints="NO" id="ngG-Te-eeU">
+                                            <rect key="frame" x="27" y="27" width="86" height="86"/>
+                                        </imageView>
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXX-CT-jff">
+                                            <rect key="frame" x="42" y="116" width="93" height="17"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.98234318620000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coins" translatesAutoresizingMaskIntoConstraints="NO" id="4ER-nz-moi">
+                                            <rect key="frame" x="15" y="116" width="17" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="17" id="Aqf-Ec-GIC"/>
+                                                <constraint firstAttribute="height" constant="17" id="QKC-4i-nFO"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.88860247459999997" green="0.88860247459999997" blue="0.88860247459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fBE-Ww-eKe" firstAttribute="trailing" secondItem="HXX-CT-jff" secondAttribute="trailing" id="2Z6-k0-rog"/>
+                                    <constraint firstItem="ngG-Te-eeU" firstAttribute="leading" secondItem="GeL-2T-ahV" secondAttribute="leadingMargin" constant="19" id="30k-np-IfQ"/>
+                                    <constraint firstItem="HXX-CT-jff" firstAttribute="leading" secondItem="4ER-nz-moi" secondAttribute="trailing" constant="10" id="4EI-hM-RmP"/>
+                                    <constraint firstItem="ngG-Te-eeU" firstAttribute="top" secondItem="fBE-Ww-eKe" secondAttribute="bottom" id="Nqu-1b-0Cq"/>
+                                    <constraint firstItem="4ER-nz-moi" firstAttribute="top" secondItem="ngG-Te-eeU" secondAttribute="bottom" constant="3" id="O6g-g4-2YB"/>
+                                    <constraint firstItem="4ER-nz-moi" firstAttribute="leading" secondItem="GeL-2T-ahV" secondAttribute="leadingMargin" constant="7" id="Prs-3U-DXL"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="4ER-nz-moi" secondAttribute="bottom" constant="-1" id="QXI-ko-mh8"/>
+                                    <constraint firstItem="4ER-nz-moi" firstAttribute="top" secondItem="HXX-CT-jff" secondAttribute="top" id="RNt-Sk-zmt"/>
+                                    <constraint firstItem="fBE-Ww-eKe" firstAttribute="centerX" secondItem="ngG-Te-eeU" secondAttribute="centerX" id="VbG-CT-bml"/>
+                                    <constraint firstItem="fBE-Ww-eKe" firstAttribute="top" secondItem="GeL-2T-ahV" secondAttribute="topMargin" constant="-5" id="gE7-fs-Hac"/>
+                                    <constraint firstItem="4ER-nz-moi" firstAttribute="bottom" secondItem="HXX-CT-jff" secondAttribute="bottom" id="h9i-v2-u2b"/>
+                                    <constraint firstItem="ngG-Te-eeU" firstAttribute="centerY" secondItem="GeL-2T-ahV" secondAttribute="centerY" id="i1b-Ul-vJp"/>
+                                    <constraint firstItem="fBE-Ww-eKe" firstAttribute="leading" secondItem="GeL-2T-ahV" secondAttribute="leadingMargin" constant="-3" id="q3U-3k-J4i"/>
+                                    <constraint firstItem="fBE-Ww-eKe" firstAttribute="centerX" secondItem="GeL-2T-ahV" secondAttribute="centerX" id="rTd-g2-zLr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imgAvatar" destination="ngG-Te-eeU" id="3Vg-a4-Ise"/>
+                                    <outlet property="lblMoney" destination="HXX-CT-jff" id="fsZ-w1-enJ"/>
+                                    <outlet property="lblRoomName" destination="fBE-Ww-eKe" id="Y7b-oo-VmT"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ffH-ep-5RK" id="WDE-ro-kty"/>
+                            <outlet property="delegate" destination="ffH-ep-5RK" id="Qlu-hK-581"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Room" id="ibE-G6-WM3">
+                        <barButtonItem key="rightBarButtonItem" image="createRoom" id="R1e-qv-g8J">
+                            <connections>
+                                <action selector="createRoom:" destination="ffH-ep-5RK" id="qc1-xG-wgi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nRZ-La-nDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4385" y="-397"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="1people" width="150" height="150"/>
         <image name="Icon" width="250" height="250"/>
         <image name="Logo" width="512" height="350"/>
         <image name="about" width="250" height="125"/>
@@ -1232,6 +1324,7 @@
         <image name="bao" width="64" height="64"/>
         <image name="bua" width="64" height="64"/>
         <image name="coins" width="32" height="32"/>
+        <image name="createRoom" width="32" height="32"/>
         <image name="keo" width="64" height="64"/>
         <image name="play" width="250" height="125"/>
         <image name="profile" width="250" height="125"/>
