@@ -33,13 +33,13 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
         //MARK: - Call Listener when application start
-        ListenRegisterEvent.ListenRegisterResponse()
-        ListenProfileEvent.ListenProfileResponse()
+        ListenRegisterEvent.listenEvent()
+        ListenProfileEvent.listenEvent()
         ListenRoomEvent.Instance.ListenRoomsList()
         ListenRoomEvent.Instance.ListenCreateRoom()
-        ListenWaitingRoomEvent.ListenWaitingRoomResponse()
-        ListenPlayingEvent.ListenPlayingResponse()
-        ListenMatchResultEvent.ListenMatchResultResponse()
+        ListenWaitingRoomEvent.listenEvent()
+        ListenPlayingEvent.listenEvent()
+        ListenMatchResultEvent.listenEvent()
         
         //Listen login event from server - First screen, don't need to manager by other class :))
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientLoginRs) { (data, ack) in

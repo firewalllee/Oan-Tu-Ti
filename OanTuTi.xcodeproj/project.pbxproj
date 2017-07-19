@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300DE201F1EF8A300B62C58 /* ListenEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300DE1F1F1EF8A300B62C58 /* ListenEvent.swift */; };
 		7E51E39F1DD4CA1300499D75 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51E39D1DD4CA1300499D75 /* SCLAlertView.swift */; };
 		7E51E3A01DD4CA1300499D75 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E51E39E1DD4CA1300499D75 /* SCLExtensions.swift */; };
 		7EE419CD1DDD864E00CFD264 /* ListenMatchResultEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE419CC1DDD864E00CFD264 /* ListenMatchResultEvent.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0300DE1F1F1EF8A300B62C58 /* ListenEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenEvent.swift; sourceTree = "<group>"; };
 		7E51E39D1DD4CA1300499D75 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		7E51E39E1DD4CA1300499D75 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		7EE419CC1DDD864E00CFD264 /* ListenMatchResultEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenMatchResultEvent.swift; sourceTree = "<group>"; };
@@ -129,7 +131,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BE2FC3DC1DD722EB00203354 /* ListenerController */ = {
+		0300DE1E1F1EF81B00B62C58 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				BEC6615D1DE0888100B6D782 /* RoomCell.swift */,
+			);
+			name = VIew;
+			sourceTree = "<group>";
+		};
+		BE2FC3DC1DD722EB00203354 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				BE2FC3D81DD7179D00203354 /* ListenRegisterEvent.swift */,
@@ -138,10 +148,10 @@
 				BE2FC3DD1DD7262C00203354 /* ListenWaitingRoomEvent.swift */,
 				7EE419CC1DDD864E00CFD264 /* ListenMatchResultEvent.swift */,
 				BE3CFD2D1DDCADBA00FD0C89 /* ListenPlayingEvent.swift */,
-				BE2FC3D61DD7168900203354 /* NotificationCommands.swift */,
 				BEF37DC91DCC5858008780D8 /* SocketIOManager.swift */,
+				0300DE1F1F1EF8A300B62C58 /* ListenEvent.swift */,
 			);
-			name = ListenerController;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		BE8CF3F11DCB0F6200F74ECE = {
@@ -164,8 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				BE8CF4011DCB0F6300F74ECE /* Main.storyboard */,
+				0300DE1E1F1EF81B00B62C58 /* VIew */,
 				BEDE989C1DCB2DC700C6806F /* Controller */,
-				BE2FC3DC1DD722EB00203354 /* ListenerController */,
+				BE2FC3DC1DD722EB00203354 /* Model */,
 				BEDE98A11DCB2FD400C6806F /* Entity */,
 				BEDE989B1DCB2DB100C6806F /* Suppporting Files */,
 				BEF37DFB1DCC5968008780D8 /* SourcesSocketIO */,
@@ -194,7 +205,6 @@
 				BE0018FC1DCCF1B50038A410 /* MenuViewController.swift */,
 				BE53A7C81DCF6C8A000A2AB8 /* ProfileViewController.swift */,
 				BE5636D41DD0DA6C00E1FEB0 /* RoomCollectionViewController.swift */,
-				BEC6615D1DE0888100B6D782 /* RoomCell.swift */,
 				BE0B02F01DD570FB006CD237 /* WaitingViewController.swift */,
 				7EF153321DDC37D500FC1F01 /* MainViewController.swift */,
 				BE7F87CD1DD46DA000C76DD3 /* ExtensionUIViewController.swift */,
@@ -205,6 +215,7 @@
 		BEDE98A11DCB2FD400C6806F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				BE2FC3D61DD7168900203354 /* NotificationCommands.swift */,
 				BE0018FA1DCCEE0E0038A410 /* User.swift */,
 				BEB13E021DDB34D900445317 /* MyProfile.swift */,
 				BEDE989D1DCB2DE300C6806F /* Commands.swift */,
@@ -363,6 +374,7 @@
 				BE2FC3D71DD7168900203354 /* NotificationCommands.swift in Sources */,
 				BEF37DF61DCC595A008780D8 /* SocketParsable.swift in Sources */,
 				BEF37DEF1DCC595A008780D8 /* SocketIOClient.swift in Sources */,
+				0300DE201F1EF8A300B62C58 /* ListenEvent.swift in Sources */,
 				BEC6615E1DE0888100B6D782 /* RoomCell.swift in Sources */,
 				7E51E3A01DD4CA1300499D75 /* SCLExtensions.swift in Sources */,
 				BEF37DCA1DCC5858008780D8 /* SocketIOManager.swift in Sources */,

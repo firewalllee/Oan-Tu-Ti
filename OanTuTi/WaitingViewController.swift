@@ -333,9 +333,9 @@ class WaitingViewController: UIViewController {
         }
         
         //Add label...Bo
-        let lblBo:UILabel = UILabel(frame: CGRect(x: x, y: txtMoneyBet.frame.maxY + 10, width: 90, height: 40))
+        let lblBo:UILabel = UILabel(frame: CGRect(x: x, y: txtMoneyBet.frame.maxY + 5, width: 90, height: 40))
         lblBo.text = "Bo >>"
-        lblBo.font = UIFont(name: "Chalkboard SE", size: 30)
+        lblBo.font = UIFont(name: "American Typewriter", size: 30)
         lblBo.textAlignment = NSTextAlignment.center
         subview.addSubview(lblBo)
         
@@ -343,7 +343,7 @@ class WaitingViewController: UIViewController {
         let picker:UIPickerView = UIPickerView(frame: CGRect(x: 100, y: txtMoneyBet.frame.maxY + 10, width: 110, height: 40))
         picker.delegate = self
         picker.layer.borderColor = UIColor.black.cgColor
-        picker.layer.borderWidth = 1.5
+        picker.layer.borderWidth = 1
         picker.layer.cornerRadius = 3
         picker.selectRow(2, inComponent: 0, animated: true)
         subview.addSubview(picker)
