@@ -8,18 +8,29 @@
 
 import Foundation
 
-class ListenProfileEvent {
+class ListenProfileEvent: ListenEvent{
     
-    init() {}
+    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientUpdateProfileRs, notificationCommand: NotificationCommands.Instance.profileDelegate)
     
-    static func ListenProfileResponse() {
-        SocketIOManager.Instance.socket.on(Commands.Instance.ClientUpdateProfileRs) { (data, ack) in
-            
-            if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
-                
-                //Send delegate to Profile screen
-                NotificationCenter.default.post(name: NotificationCommands.Instance.profileDelegate, object: response)
-            }
-        }
+    static func listenEvent() {
+        commandListenEvent.listenResponse()
     }
 }
+
+//class ListenProfileEvent {
+//    
+//    init() {}
+//    
+//    static func ListenProfileResponse() {
+//        SocketIOManager.Instance.socket.on(Commands.Instance.ClientUpdateProfileRs) { (data, ack) in
+//            
+//            if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+//                
+//                //Send delegate to Profile screen
+//                NotificationCenter.default.post(name: NotificationCommands.Instance.profileDelegate, object: response)
+//            }
+//        }
+//    }
+//}
+
+

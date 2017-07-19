@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class SocketIOManager {
     
     static let Instance:SocketIOManager = SocketIOManager()
