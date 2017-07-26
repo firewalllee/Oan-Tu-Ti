@@ -15,17 +15,25 @@ class LoginViewController: UIViewController {
 
     //MARK: - Mapped items
     @IBOutlet weak var wrapView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var wrapViewVerticalContraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomContainerContraint: NSLayoutConstraint!
+    
     
     //MARK: - Declarations
     private var spaceTopFree:CGFloat!
     private let indicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    private var sum: CGFloat!
     
     //MARK: - Define
-
+    private let textFieldHeight: CGFloat = 30
+    private let defaultBottomUIViewContraight:CGFloat = 0
+    private let limitationDistanceKeyboardAndTextfield:CGFloat = 20
+    
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +44,13 @@ class LoginViewController: UIViewController {
         ListenRegisterEvent.listenEvent()
         ListenProfileEvent.listenEvent()
         ListenRoomEvent.Instance.ListenRoomsList()
-        ListenRoomEvent.Instance.ListenCreateRoom()
+        ListenCreateRoomEvent.listenEvent()
         ListenWaitingRoomEvent.listenEvent()
         ListenPlayingEvent.listenEvent()
         ListenMatchResultEvent.listenEvent()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.showKeyboard(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.hideKeyboard(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
         //Listen login event from server - First screen, don't need to manager by other class :))
         SocketIOManager.Instance.socket.on(Commands.Instance.ClientLoginRs) { (data, ack) in
@@ -114,6 +125,30 @@ class LoginViewController: UIViewController {
         
         return true
     }
+
+    
+    @IBAction func txt_EditingBegin(_ sender: Any) {
+        let txt: UITextField = sender as! UITextField
+        sum = wrapView.frame.origin.y + txt.frame.origin.y + textFieldHeight
+    }
+    
+    func showKeyboard(_ notification: Notification) {
+        let keyboard: NSValue = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let heightKeyboard: CGFloat = keyboard.cgRectValue.height
+        
+        let distance = containerView.frame.height - (sum + heightKeyboard)
+        print(distance)
+        if distance < limitationDistanceKeyboardAndTextfield {
+            bottomContainerContraint.constant = abs(distance) + 30
+            let point: CGPoint = CGPoint(x: 0, y: bottomContainerContraint.constant)
+            scrollView.setContentOffset(point, animated: true)
+        }
+        
+    }
+    
+    func hideKeyboard(_ notification: Notification) {
+        bottomContainerContraint.constant = defaultBottomUIViewContraight
+    }
     
     //MARK: - Login tasks
     @IBAction func btnLogin(_ sender: UIButton) {
@@ -143,21 +178,6 @@ class LoginViewController: UIViewController {
         self.performSegue(withIdentifier: Contants.Instance.segueRegister, sender: nil)
     }
     
-    //MARK: - Exit tasks
-    @IBAction func exitButton(_ sender: UIBarButtonItem) {
-        
-        let alert:UIAlertController = UIAlertController(title: "Exit?", message: "Do you want to exit application?", preferredStyle: UIAlertControllerStyle.alert)
-        let actionCacel:UIAlertAction = UIAlertAction(title: "Exit", style: UIAlertActionStyle.destructive) { (btn) in
-            exit(0)
-        }
-        let actionBack:UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil)
-        
-        alert.addAction(actionCacel)
-        alert.addAction(actionBack)
-        
-        self.present(alert, animated: true, completion: nil)
-        
-    }
 }
 
 //MARK: - Prepare for segue
@@ -171,6 +191,7 @@ extension LoginViewController:ProtocolUserEmail {
             }
         }
     }
+
 }
 
 

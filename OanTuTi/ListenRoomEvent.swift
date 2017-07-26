@@ -97,22 +97,21 @@ class ListenRoomEvent {
             }
         }
     }
-    
-    func ListenCreateRoom() {
-        
-        SocketIOManager.Instance.socket.on(Commands.Instance.ClientCreateRoomRs) { (data, ack) in
-
-            if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
-                
-                //Send to rooms list screen an event when user create room
-                NotificationCenter.default.post(name: NotificationCommands.Instance.createRoomDelegate, object: response)
-            }
-        }
-        
-        SocketIOManager.Instance.socket.on(Commands.Instance.ClientJoinRoomRs) { (data, ack) in
-            if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
-                NotificationCenter.default.post(name: NotificationCommands.Instance.joinRoomDelegate, object: response)
-            }
-        }
-    }
+    //func ListenCreateRoom() {
+    //
+    //    SocketIOManager.Instance.socket.on(Commands.Instance.ClientCreateRoomRs) { (data, ack) in
+    //
+    //        if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+    //
+    //            //Send to rooms list screen an event when user create room
+    //            NotificationCenter.default.post(name: NotificationCommands.Instance.createRoomDelegate, object: response)
+    //        }
+    //    }
+    //
+    //    SocketIOManager.Instance.socket.on(Commands.Instance.ClientJoinRoomRs) { (data, ack) in
+    //        if let response:Dictionary<String, Any> = data[0] as? Dictionary<String, Any> {
+    //            NotificationCenter.default.post(name: NotificationCommands.Instance.joinRoomDelegate, object: response)
+    //        }
+    //    }
+    //}
 }

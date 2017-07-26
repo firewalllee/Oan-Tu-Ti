@@ -201,7 +201,6 @@ class RegisterViewController: UIViewController {
         let heightKeyboard:CGFloat = keyboard.cgRectValue.height
         
         let distance = containerView.frame.height - (sum + heightKeyboard)
-
         
         if distance < limitationDistanceKeyboardAndTextField {
             
@@ -215,6 +214,7 @@ class RegisterViewController: UIViewController {
     func hideKeyboard(_ notification:Notification) {
         bottomContainerContraint.constant = defaultBottomUIViewContraint
     }
+    
     
     //    //Begin edit
     //    func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -241,7 +241,7 @@ extension RegisterViewController: UINavigationControllerDelegate, UIImagePickerC
     // Reduce size photos before uploading
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let imageSelected = info [UIImagePickerControllerOriginalImage] as? UIImage {
-            
+             
             let imageValue:CGFloat = max(imageSelected.size.height, imageSelected.size.width)
             
             if imageValue > 3000 {

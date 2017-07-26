@@ -92,17 +92,19 @@ extension UIViewController {
         self.view.endEditing(true)
     }
     
-    // View pushed onto the keyboard is turned on
-    func moveTextField(moveDistance: Int, up: Bool) {
-        let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? moveDistance: -moveDistance)
-        
-        UIView.beginAnimations("animateTextField", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }
+    
+//    // View pushed onto the keyboard is turned on
+//    func moveTextField(moveDistance: Int, up: Bool) {
+//        let moveDuration = 0.3
+//        let movement: CGFloat = CGFloat(up ? moveDistance: -moveDistance)
+//        
+//        UIView.beginAnimations("animateTextField", context: nil)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        UIView.setAnimationDuration(moveDuration)
+//        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+//        UIView.commitAnimations()
+//    }
+//    
     
 }
 
@@ -146,8 +148,7 @@ extension UIView {
             self.layer.transform = CATransform3DMakeRotation(0, 1, 0, 0)
         }
     }
-    
-    
+  
 }
 
 //MARK: - Extension UITextField
