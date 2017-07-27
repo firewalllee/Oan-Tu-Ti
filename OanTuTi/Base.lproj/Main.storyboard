@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QF-2k-Cy5">
-                                                <rect key="frame" x="19.5" y="145" width="338" height="377"/>
+                                                <rect key="frame" x="19" y="145" width="338" height="377"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-VS-P2o">
                                                         <rect key="frame" x="10" y="10" width="318" height="127"/>
@@ -53,7 +53,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGX-6e-jcR">
-                                                        <rect key="frame" x="89" y="257" width="158" height="40"/>
+                                                        <rect key="frame" x="89" y="257" width="159" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Wqs-MV-N7d"/>
                                                         </constraints>
@@ -76,7 +76,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbh-0c-0Qc">
-                                                        <rect key="frame" x="89" y="317" width="158" height="40"/>
+                                                        <rect key="frame" x="89" y="317" width="159" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
                                                         <state key="normal" title="Sign Up">
@@ -175,7 +175,7 @@
                                 <rect key="frame" x="19" y="141" width="337.5" height="425"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4U-0J-7Kr">
-                                        <rect key="frame" x="100.5" y="138" width="135.5" height="62"/>
+                                        <rect key="frame" x="100" y="138" width="135.5" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="X4U-0J-7Kr" secondAttribute="height" multiplier="26:12" id="fiD-Lk-ASK"/>
                                         </constraints>
@@ -185,11 +185,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niR-Fv-U5K">
-                                        <rect key="frame" x="100.5" y="353.5" width="135.5" height="61.5"/>
+                                        <rect key="frame" x="100" y="353.5" width="135.5" height="61.5"/>
                                         <state key="normal" image="about"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-nz-GiF">
-                                        <rect key="frame" x="100.5" y="247" width="135.5" height="61.5"/>
+                                        <rect key="frame" x="100" y="247" width="135.5" height="61.5"/>
                                         <state key="normal" image="profile"/>
                                         <connections>
                                             <action selector="btnProfile:" destination="GLN-0X-qb3" eventType="touchUpInside" id="lCz-Ca-6xV"/>
@@ -311,13 +311,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bo 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lr-en-3cX">
-                                        <rect key="frame" x="205" y="54.5" width="162" height="29"/>
+                                        <rect key="frame" x="205.5" y="54.5" width="161.5" height="29"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA8-yA-XgW">
-                                        <rect key="frame" x="8" y="54.5" width="162" height="29"/>
+                                        <rect key="frame" x="8" y="54.5" width="162.5" height="29"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -365,7 +365,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-pJ-VX2">
-                                        <rect key="frame" x="125" y="92" width="240" height="40"/>
+                                        <rect key="frame" x="125" y="91" width="240" height="40"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="33"/>
                                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -846,7 +846,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81M-Fu-hwP">
-                                                <rect key="frame" x="19.5" y="139" width="337" height="388"/>
+                                                <rect key="frame" x="20" y="139" width="337" height="388"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="C73-x7-gcA">
                                                         <rect key="frame" x="116" y="20" width="105" height="128"/>
@@ -892,7 +892,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltD-Qf-XlZ">
-                                                        <rect key="frame" x="89" y="328" width="158" height="40"/>
+                                                        <rect key="frame" x="88.5" y="328" width="158" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="DKH-TC-Qdx"/>
@@ -1013,10 +1013,10 @@
                                         <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8u-Dv-WbD">
-                                                <rect key="frame" x="19.5" y="146.5" width="337" height="375"/>
+                                                <rect key="frame" x="20" y="146.5" width="337" height="375.5"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="zUY-I4-9Ye">
-                                                        <rect key="frame" x="15" y="15" width="105" height="105"/>
+                                                        <rect key="frame" x="15" y="16" width="105" height="105"/>
                                                         <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="zUY-I4-9Ye" secondAttribute="height" multiplier="1:1" id="21Y-cy-Wmw"/>
@@ -1026,7 +1026,7 @@
                                                         </connections>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="445-70-vdG">
-                                                        <rect key="frame" x="10" y="135" width="317" height="30"/>
+                                                        <rect key="frame" x="10" y="136" width="317" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="SsY-VE-hh0"/>
                                                         </constraints>
@@ -1035,13 +1035,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Losts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaD-Pd-GZ2">
-                                                        <rect key="frame" x="241.5" y="90" width="90.5" height="30"/>
+                                                        <rect key="frame" x="241" y="91" width="91" height="30"/>
                                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="19"/>
                                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFE-U8-9UL">
-                                                        <rect key="frame" x="10" y="175" width="317" height="130"/>
+                                                        <rect key="frame" x="10" y="176" width="317" height="130"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="😎Nick name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XZX-eo-oJD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="317" height="30"/>
@@ -1094,7 +1094,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYw-5q-AHM">
-                                                        <rect key="frame" x="130" y="15" width="202" height="30"/>
+                                                        <rect key="frame" x="130" y="16" width="202" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="FwY-sI-y5j"/>
                                                         </constraints>
@@ -1103,26 +1103,26 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coins" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-WW-xlY">
-                                                        <rect key="frame" x="130" y="57" width="20" height="20"/>
+                                                        <rect key="frame" x="130" y="58" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="HCu-nu-dKG"/>
                                                             <constraint firstAttribute="height" constant="20" id="gGY-Ls-SCe"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coins............................" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ump-cw-I8D">
-                                                        <rect key="frame" x="160" y="57" width="172" height="20"/>
+                                                        <rect key="frame" x="160" y="58" width="172" height="20"/>
                                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2l-kn-DfD">
-                                                        <rect key="frame" x="130" y="90" width="90" height="30"/>
+                                                        <rect key="frame" x="130" y="91" width="90.5" height="30"/>
                                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="19"/>
                                                         <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sV-65-vXH">
-                                                        <rect key="frame" x="89" y="320" width="158" height="40"/>
+                                                        <rect key="frame" x="88.5" y="321" width="158" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="SWo-sP-gcj"/>

@@ -6,37 +6,33 @@
 //  Copyright © 2017 Phuc. All rights reserved.
 //
 
-import Foundation
-
-class ListenCreateRoomEvent {
-    
-    static func listenEvent() {
-        
-        ListenCreateRoom.listenEvent()
-        ListenClientJoinRoom.listenEvent()
-        
-    }
-}
-
-
 class ListenCreateRoom: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientCreateRoomRs, notificationCommand: NotificationCommands.Instance.createRoomDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientCreateRoomRs, notificationCommand: NotificationCommands.Instance.createRoomDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
 
 class ListenClientJoinRoom: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientJoinRoomRs, notificationCommand: NotificationCommands.Instance.joinRoomDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientJoinRoomRs, notificationCommand: NotificationCommands.Instance.joinRoomDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
 
+//class ListenCreateRoomEvent {
+//
+//    static func listenEvent() {
+//
+//        ListenCreateRoom.listenEvent()
+//        ListenClientJoinRoom.listenEvent()
+//
+//    }
+//}
 
 //func ListenCreateRoom() {
 //    

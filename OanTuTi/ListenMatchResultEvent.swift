@@ -6,13 +6,11 @@
 //  Copyright © 2016 Phuc. All rights reserved.
 //
 
-import Foundation
-
 class ListenMatchResultEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ServerSendMatchResult, notificationCommand: NotificationCommands.Instance.matchResultDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ServerSendMatchResult, notificationCommand: NotificationCommands.Instance.matchResultDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }

@@ -102,9 +102,7 @@ class RegisterViewController: UIViewController {
                             self.dismiss(animated: true, completion: nil)
                         }
                     }
-                    
                 }
-                    
                 //Login failed
                 else {
                     

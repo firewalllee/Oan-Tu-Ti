@@ -6,13 +6,11 @@
 //  Copyright © 2016 Phuc. All rights reserved.
 //
 
-import Foundation
-
 class ListenPlayingEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientSubmitSelectionRs, notificationCommand: NotificationCommands.Instance.submitDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientSubmitSelectionRs, notificationCommand: NotificationCommands.Instance.submitDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }

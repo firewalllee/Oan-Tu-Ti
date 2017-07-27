@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Swinject
 
 //Global variables
 //var User_mail:String = String()
@@ -33,6 +34,7 @@ class LoginViewController: UIViewController {
     private let textFieldHeight: CGFloat = 30
     private let defaultBottomUIViewContraight:CGFloat = 0
     private let limitationDistanceKeyboardAndTextfield:CGFloat = 20
+    private let resolver = ApplicationAssembler.sharedInstance.resolver
     
     //MARK: - Life cycle
     override func viewDidLoad() {
@@ -41,13 +43,27 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
         //MARK: - Call Listener when application start
-        ListenRegisterEvent.listenEvent()
-        ListenProfileEvent.listenEvent()
+        
         ListenRoomEvent.Instance.ListenRoomsList()
-        ListenCreateRoomEvent.listenEvent()
-        ListenWaitingRoomEvent.listenEvent()
-        ListenPlayingEvent.listenEvent()
-        ListenMatchResultEvent.listenEvent()
+        
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientSignUpRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientUpdateProfileRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ServerSendMatchResult)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientSubmitSelectionRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.PlayerLeaveRoom)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientLeaveRoomRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientUpdateRoomInfoRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientReadyRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientsStartPlayingRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientCreateRoomRs)?.listenEvent()
+        resolver.resolve(ListenEvent.self, name: Commands.Instance.ClientJoinRoomRs)?.listenEvent()
+        
+//        ListenRegisterEvent.listenEvent()
+//        ListenProfileEvent.listenEvent()
+//        ListenCreateRoomEvent.listenEvent()
+//        ListenWaitingRoomEvent.listenEvent()
+//        ListenPlayingEvent.listenEvent()
+//        ListenMatchResultEvent.listenEvent()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.showKeyboard(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.hideKeyboard(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)

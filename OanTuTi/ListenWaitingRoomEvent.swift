@@ -6,34 +6,20 @@
 //  Copyright © 2016 Phuc. All rights reserved.
 //
 
-import Foundation
-
-class ListenWaitingRoomEvent {
-    static func listenEvent() {
-        
-        ListenPlayerLeaveRoomEvent.listenEvent()
-        ListenClientLeaveRoomEvent.listenEvent()
-        ListenClientUpdateRoomInfoEvent.listenEvent()
-        ListenClientReadyEvent.listenEvent()
-        ListenClientStartGameEvent.listenEvent()
-    }
-}
-
-
 class ListenPlayerLeaveRoomEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.PlayerLeaveRoom, notificationCommand: NotificationCommands.Instance.waitingDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.PlayerLeaveRoom, notificationCommand: NotificationCommands.Instance.waitingDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
 
 class ListenClientLeaveRoomEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientLeaveRoomRs, notificationCommand: NotificationCommands.Instance.leaveRoomDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientLeaveRoomRs, notificationCommand: NotificationCommands.Instance.leaveRoomDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
@@ -41,18 +27,18 @@ class ListenClientLeaveRoomEvent: ListenEvent {
 
 class ListenClientUpdateRoomInfoEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientUpdateRoomInfoRs, notificationCommand: NotificationCommands.Instance.updateRoomInfoDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientUpdateRoomInfoRs, notificationCommand: NotificationCommands.Instance.updateRoomInfoDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
 
 class ListenClientReadyEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientReadyRs, notificationCommand: NotificationCommands.Instance.readyDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientReadyRs, notificationCommand: NotificationCommands.Instance.readyDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
@@ -60,12 +46,23 @@ class ListenClientReadyEvent: ListenEvent {
 
 class ListenClientStartGameEvent: ListenEvent {
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientsStartPlayingRs, notificationCommand: NotificationCommands.Instance.clientSartgameDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientsStartPlayingRs, notificationCommand: NotificationCommands.Instance.clientSartgameDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }
+
+//class ListenWaitingRoomEvent {
+//    static func listenEvent() {
+//
+//        ListenPlayerLeaveRoomEvent.listenEvent()
+//        ListenClientLeaveRoomEvent.listenEvent()
+//        ListenClientUpdateRoomInfoEvent.listenEvent()
+//        ListenClientReadyEvent.listenEvent()
+//        ListenClientStartGameEvent.listenEvent()
+//    }
+//}
 
 //class ListenWaitingRoomEvent {
 //    

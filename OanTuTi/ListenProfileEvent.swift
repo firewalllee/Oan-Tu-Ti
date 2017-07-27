@@ -6,13 +6,11 @@
 //  Copyright © 2016 Phuc. All rights reserved.
 //
 
-import Foundation
-
 class ListenProfileEvent: ListenEvent{
     
-    static var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientUpdateProfileRs, notificationCommand: NotificationCommands.Instance.profileDelegate)
+    var commandListenEvent: ListenResponse = ListenResponse(command: Commands.Instance.ClientUpdateProfileRs, notificationCommand: NotificationCommands.Instance.profileDelegate)
     
-    static func listenEvent() {
+    func listenEvent() {
         commandListenEvent.listenResponse()
     }
 }

@@ -5,9 +5,7 @@
 //  Created by beesightsoft on 7/19/17.
 //  Copyright © 2017 Phuc. All rights reserved.
 //
-
 import Foundation
-
 
 class ListenResponse {
     let command: String?
@@ -32,7 +30,7 @@ class ListenResponse {
 
 protocol ListenEvent {
     
-    static var commandListenEvent: ListenResponse { get }
+    var commandListenEvent: ListenResponse { get }
     
-    static func listenEvent()
+    func listenEvent()
 }
